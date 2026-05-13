@@ -1,7 +1,20 @@
 
 import { GoogleGenAI } from "@google/genai";
 
-const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
+// Lazy initialization: only create the client when actually needed.
+// This prevents a missing GEMINI_API_KEY from breaking the entire app at load time.
+let _ai: GoogleGenAI | null = null;
+function getAI(): GoogleGenAI {
+  if (_ai) return _ai;
+  const apiKey = process.env.GEMINI_API_KEY;
+  if (!apiKey) {
+    throw new Error(
+      "GEMINI_API_KEY no está configurada. Añádela en Vercel (Settings → Environment Variables) y vuelve a desplegar."
+    );
+  }
+  _ai = new GoogleGenAI({ apiKey });
+  return _ai;
+}
 
 export async function generateCampaign(params: {
   companyType: string;
@@ -51,7 +64,7 @@ export async function generateCampaign(params: {
   `;
 
   try {
-    const response = await ai.models.generateContent({
+    const response = await getAI().models.generateContent({
       model: "gemini-3-flash-preview",
       contents: prompt,
       config: {
@@ -102,7 +115,7 @@ export async function generateAIAssistant(params: {
   `;
 
   try {
-    const response = await ai.models.generateContent({
+    const response = await getAI().models.generateContent({
       model: "gemini-3-flash-preview",
       contents: prompt,
       config: {
@@ -155,7 +168,7 @@ export async function generateSalesAutomation(params: {
   `;
 
   try {
-    const response = await ai.models.generateContent({
+    const response = await getAI().models.generateContent({
       model: "gemini-3-flash-preview",
       contents: prompt,
       config: {
@@ -215,7 +228,7 @@ export async function generateWebinarPlan(params: {
   `;
 
   try {
-    const response = await ai.models.generateContent({
+    const response = await getAI().models.generateContent({
       model: "gemini-3-flash-preview",
       contents: prompt,
       config: {
@@ -276,7 +289,7 @@ export async function generateSalesAcademyPlan(params: {
   `;
 
   try {
-    const response = await ai.models.generateContent({
+    const response = await getAI().models.generateContent({
       model: "gemini-3-flash-preview",
       contents: prompt,
       config: {
@@ -329,7 +342,7 @@ export async function generateDataRoomPlan(params: {
   `;
 
   try {
-    const response = await ai.models.generateContent({
+    const response = await getAI().models.generateContent({
       model: "gemini-3-flash-preview",
       contents: prompt,
       config: {
