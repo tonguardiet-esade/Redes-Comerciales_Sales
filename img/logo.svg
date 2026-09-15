@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Conexiones -->
+  <line x1="50" y1="50" x2="50" y2="20" stroke="#1A2B48" stroke-width="3" stroke-linecap="round" />
+  <line x1="50" y1="50" x2="25" y2="70" stroke="#1A2B48" stroke-width="3" stroke-linecap="round" />
+  <line x1="50" y1="50" x2="75" y2="70" stroke="#1A2B48" stroke-width="3" stroke-linecap="round" />
+  
+  <!-- Núcleo Central (Anillo Azul) -->
+  <circle cx="50" cy="50" r="14" fill="white" stroke="#1A2B48" stroke-width="8" />
+  
+  <!-- Nodos Periféricos (Círculos Rojos) -->
+  <circle cx="50" cy="20" r="10" fill="#D32F2F" />
+  <circle cx="25" cy="70" r="10" fill="#D32F2F" />
+  <circle cx="75" cy="70" r="10" fill="#D32F2F" />
+</svg>

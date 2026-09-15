@@ -13,7 +13,10 @@ export const ca: Translations = {
     titlePrefix: "Benvinguts a ",
     titleSuffix: "Redes Comerciales.Sales",
     description: "Les 'smart solutions' de la nostra màquina de vendes per aconseguir ajudes públiques per a tu o per oferir-ho com a servei als teus clients.",
-    cta: "Intro al nostre Sales Playbook"
+    cta: "Intro al nostre Sales Playbook",
+    bullet1: "Més vendes sense ampliar l'equip intern",
+    bullet2: "Partners actius i alineats",
+    bullet3: "Control total del rendiment"
   },
   features: {
     title: "Tot el que necessites per créixer",

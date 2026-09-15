@@ -1,74 +1,58 @@
 # Redes Comerciales.Sales
 
-A modern, multi-language landing page and specialized toolset for **Redes Comerciales.Sales**. This platform offers a suite of interactive tools designed to boost sales and marketing efforts, from lead generation and sales automation to AI-assisted content creation.
+Aplicación Sales del ecosistema **Redes Comerciales**: landing con herramientas de IA para ventas y marketing.
 
-## 🚀 Features
+## Ecosistema local
 
-- **Multi-language Support**: Seamless switching between English, Spanish, Catalan, French, Italian, and German.
-- **AI-Powered Tools**: Integration with Gemini AI for sales assistance and campaign generation.
-- **Sales Toolkit**:
-  - Sales Automation Tool
-  - Webinar Planner
-  - Data Room Management
-  - Campaign Generator
-  - Sales Academy
-- **Responsive Design**: Polished UI built with Tailwind CSS and Motion for a premium user experience.
-- **Authentication**: Secure login integration via Supabase.
-- **Theme Support**: Dark and Light mode options.
+| Aplicación | Puerto | URL local |
+|------------|--------|-----------|
+| **Web** (este proyecto enlaza aquí) | 3000 | `http://localhost:3000` |
+| **Sales** (este proyecto) | 3001 | `http://localhost:3001` |
+| **Plataforma** | 5174 | `http://localhost:5174` |
 
-## 🛠️ Tech Stack
+## Características
 
-- **Framework**: [React 19](https://react.dev/)
-- **Bundler**: [Vite](https://vitejs.dev/)
-- **Styling**: [Tailwind CSS](https://tailwindcss.com/)
-- **Animations**: [Motion](https://motion.dev/)
-- **Database/Auth**: [Supabase](https://supabase.com/)
-- **AI**: [Google Gemini Pro API (@google/genai)](https://ai.google.dev/)
-- **Icons**: [Lucide React](https://lucide.dev/)
+- Diseño Mosaic alineado con RedesComerciales_Web
+- Idiomas: español, catalán e inglés
+- Modo claro/oscuro, cursor personalizado, fondo 3D
+- 6 herramientas AI (Gemini): campañas, asistentes, webinars, automatizaciones, academy, data room
+- Auth Supabase (SSO entre herramientas)
 
-## 📦 Getting Started
+## Tech stack
 
-### Prerequisites
+- React 19 + TypeScript + Vite 6
+- Tailwind CSS v4
+- GSAP, Lenis, Three.js, Motion
+- Supabase, Google Gemini
 
-- [Node.js](https://nodejs.org/) (v18 or higher)
-- [npm](https://www.npmjs.com/)
-
-### Installation
-
-1. Clone the repository:
-   ```bash
-   git clone <your-repository-url>
-   cd <repository-folder>
-   ```
-
-2. Install dependencies:
-   ```bash
-   npm install
-   ```
-
-3. Configure Environment Variables:
-   Create a `.env.local` file in the root directory and add your keys:
-   ```env
-   VITE_SUPABASE_URL=your_supabase_url
-   VITE_SUPABASE_ANON_KEY=your_supabase_anon_key
-   GEMINI_API_KEY=your_gemini_api_key
-   ```
-
-4. Start the development server:
-   ```bash
-   npm run dev
-   ```
-
-## 🏗️ Building for Production
-
-To create an optimized production build:
+## Instalación
 
 ```bash
-npm run build
+npm install
+cp .env.example .env.local
+# Edita .env.local y añade GEMINI_API_KEY (y Supabase si aplica)
+npm run dev
 ```
 
-The output will be in the `dist/` folder.
+La app arranca en **http://localhost:3001**.
 
-## 📄 License
+## Scripts
 
-This project is licensed under the MIT License.
+| Comando | Descripción |
+|---------|-------------|
+| `npm run dev` | Servidor de desarrollo (puerto 3001) |
+| `npm run build` | Build de producción → `dist/` |
+| `npm run preview` | Previsualizar build |
+| `npm run lint` | Comprobación TypeScript |
+
+## Variables de entorno
+
+Ver `.env.example`. En producción (Hostinger), configura las mismas variables en el panel de despliegue.
+
+## Despliegue
+
+1. `npm run build`
+2. Sube el contenido de `dist/` a Hostinger
+3. Configura variables de entorno en el panel
+
+No commitear `.env.local` ni claves API.

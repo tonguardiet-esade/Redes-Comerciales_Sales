@@ -11,7 +11,10 @@ export const en = {
     titlePrefix: "Welcome to ",
     titleSuffix: "Redes Comerciales.Sales",
     description: "The 'smart solutions' of our sales machine to get public aid for you or to offer it as a service to your clients.",
-    cta: "Intro to our Sales Playbook"
+    cta: "Intro to our Sales Playbook",
+    bullet1: "More sales without expanding internal team",
+    bullet2: "Active and aligned partners",
+    bullet3: "Full control of performance"
   },
   features: {
     title: "Everything you need to grow",

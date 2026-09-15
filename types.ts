@@ -1,7 +1,7 @@
 import { en } from './i18n/en';
 import { Session } from '@supabase/supabase-js';
 
-export type Language = 'en' | 'es' | 'ca' | 'fr' | 'de' | 'it';
+export type Language = 'en' | 'es' | 'ca';
 export type Theme = 'light' | 'dark';
 
 export type Translations = typeof en & {
