@@ -1,0 +1,78 @@
+name: Deploy Sales to Hostinger
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Descargar repositorio
+        uses: actions/checkout@v4
+
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Instalar dependencias
+        run: npm ci
+
+      - name: Compilar Sales
+        env:
+          VITE_WEB_URL: https://redescomerciales.pro
+          VITE_PLATAFORMA_URL: https://plataforma.redescomerciales.pro
+          VITE_PLATFORM_URL: https://plataforma.redescomerciales.pro
+        run: npm run build
+
+      - name: Comprobar build
+        run: |
+          echo "Contenido generado:"
+          ls -lah dist
+          test -f dist/index.html
+
+      - name: Configurar SSH
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.HOSTINGER_SSH_KEY }}
+          HOST: ${{ secrets.HOSTINGER_HOST }}
+          PORT: ${{ secrets.HOSTINGER_PORT }}
+        run: |
+          mkdir -p ~/.ssh
+          printf '%s\n' "$SSH_PRIVATE_KEY" > ~/.ssh/hostinger_key
+          chmod 600 ~/.ssh/hostinger_key
+          ssh-keyscan -p "$PORT" "$HOST" >> ~/.ssh/known_hosts
+
+      - name: Preparar subida
+        env:
+          HOST: ${{ secrets.HOSTINGER_HOST }}
+          PORT: ${{ secrets.HOSTINGER_PORT }}
+          USER: ${{ secrets.HOSTINGER_USER }}
+        run: |
+          ssh -i ~/.ssh/hostinger_key -p "$PORT" "$USER@$HOST" \
+          'rm -rf ~/domains/sales.redescomerciales.pro/deploy_temp &&
+          mkdir -p ~/domains/sales.redescomerciales.pro/deploy_temp'
+
+      - name: Subir Sales
+        env:
+          HOST: ${{ secrets.HOSTINGER_HOST }}
+          PORT: ${{ secrets.HOSTINGER_PORT }}
+          USER: ${{ secrets.HOSTINGER_USER }}
+        run: |
+          scp -i ~/.ssh/hostinger_key -P "$PORT" -r dist/. \
+          "$USER@$HOST:/home/$USER/domains/sales.redescomerciales.pro/deploy_temp/"
+
+      - name: Publicar Sales
+        env:
+          HOST: ${{ secrets.HOSTINGER_HOST }}
+          PORT: ${{ secrets.HOSTINGER_PORT }}
+          USER: ${{ secrets.HOSTINGER_USER }}
+        run: |
+          ssh -i ~/.ssh/hostinger_key -p "$PORT" "$USER@$HOST" \
+          'find ~/domains/sales.redescomerciales.pro/public_html -mindepth 1 -maxdepth 1 -exec rm -rf {} + &&
+          cp -a ~/domains/sales.redescomerciales.pro/deploy_temp/. ~/domains/sales.redescomerciales.pro/public_html/ &&
+          rm -rf ~/domains/sales.redescomerciales.pro/deploy_temp'
