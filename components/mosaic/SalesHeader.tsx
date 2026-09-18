@@ -3,6 +3,7 @@ import { Moon, Sun } from 'lucide-react';
 import logo from '../../img/logo.svg';
 import { useSettings } from '../../context/SettingsContext';
 import { EXTERNAL_LINKS } from '../../config/externalLinks';
+import WhatsAppButton from './WhatsAppButton';
 import { type Language } from '../../types';
 
 const LANGUAGES: { code: Language; label: string }[] = [
@@ -141,6 +142,9 @@ const SalesHeader = () => {
             <span className="mosaic-label text-mosaic-black-300 hidden md:inline" aria-hidden="true">
               {lang} {timeStr}
             </span>
+
+            <WhatsAppButton variant="nav-mobile" />
+            <WhatsAppButton variant="nav" />
 
             <button
               ref={menuButtonRef}

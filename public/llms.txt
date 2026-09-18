@@ -1,0 +1,21 @@
+# Redes Comerciales.Sales
+
+> Redes Comerciales.Sales es el hub de herramientas comerciales con IA del ecosistema Redes Comerciales. Genera campañas outbound, contenido, webinars y procesos de venta sin empezar de cero.
+
+# H1
+
+Convierte tu estrategia comercial en acción
+
+# Description
+
+Herramientas con IA para equipos comerciales B2B: generador de campañas, asistente de contenido, planificador de webinars, automatizaciones, Sales Academy y Data Room. No sustituye tu CRM; complementa tu stack actual.
+
+# Links
+
+- [Inicio](http://localhost:3001/)
+- [Ecosistema Redes Comerciales](http://localhost:3000/)
+
+# Contact
+
+- Email: info@redescomerciales.ai
+- WhatsApp: https://wa.me/34660688501

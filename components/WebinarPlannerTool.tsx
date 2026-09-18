@@ -24,9 +24,11 @@ import {
   Presentation
 } from 'lucide-react';
 import { generateWebinarPlan } from '../lib/gemini';
+import { useTranslations } from '../hooks/useTranslations';
 import { motion, AnimatePresence } from 'motion/react';
 
 const WebinarPlannerTool: React.FC = () => {
+  const { t } = useTranslations();
   const [step, setStep] = useState(1);
   const [formData, setFormData] = useState({
     topic: '',
@@ -35,6 +37,7 @@ const WebinarPlannerTool: React.FC = () => {
   });
 
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
   const [result, setResult] = useState<any>(null);
   const [copiedStates, setCopiedStates] = useState<Record<string, boolean>>({});
 
@@ -53,17 +56,18 @@ const WebinarPlannerTool: React.FC = () => {
 
   const handleGenerate = async () => {
     if (!formData.topic || !formData.audience || !formData.objective) {
-      alert('Por favor, rellena todos los campos.');
+      setError(t.tools.validationError);
       return;
     }
 
+    setError(null);
     setLoading(true);
     try {
       const data = await generateWebinarPlan(formData);
       setResult(data);
       setStep(2);
-    } catch (error) {
-      alert('Error al generar el plan. Inténtalo de nuevo.');
+    } catch {
+      setError(t.tools.genericError);
     } finally {
       setLoading(false);
     }
@@ -140,6 +144,10 @@ const WebinarPlannerTool: React.FC = () => {
         </div>
       </div>
 
+      {error && (
+        <p className="text-sm text-red-500 text-center" role="alert">{error}</p>
+      )}
+
       <button
         onClick={handleGenerate}
         disabled={loading}
@@ -152,7 +160,7 @@ const WebinarPlannerTool: React.FC = () => {
           </>
         ) : (
           <>
-            Generar Plan de Webinar
+            Generar plan de webinar
             <ArrowRight className="w-5 h-5" />
           </>
         )}

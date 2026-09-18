@@ -4,6 +4,7 @@ import {
   COOKIE_CONSENT_KEY,
   COOKIE_CONSENT_OPEN_EVENT,
 } from '../../lib/cookieConsent';
+import { initAnalytics } from '../../lib/analytics';
 import MosaicButton from './MosaicButton';
 
 const CookieConsent = () => {
@@ -24,8 +25,15 @@ const CookieConsent = () => {
 
   const accept = () => {
     localStorage.setItem(COOKIE_CONSENT_KEY, 'accepted');
+    initAnalytics();
     setVisible(false);
   };
+
+  useEffect(() => {
+    if (localStorage.getItem(COOKIE_CONSENT_KEY)) {
+      initAnalytics();
+    }
+  }, []);
 
   if (!visible) return null;
 

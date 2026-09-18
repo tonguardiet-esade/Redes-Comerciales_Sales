@@ -18,8 +18,10 @@ import {
 } from 'lucide-react';
 import { generateSalesAcademyPlan } from '../lib/gemini';
 import { motion, AnimatePresence } from 'motion/react';
+import { useTranslations } from '../hooks/useTranslations';
 
 const SalesAcademyTool: React.FC = () => {
+  const { t } = useTranslations();
   const [formData, setFormData] = useState({
     level: 'Intermedio',
     salesType: '',
@@ -27,6 +29,7 @@ const SalesAcademyTool: React.FC = () => {
   });
 
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
   const [result, setResult] = useState<any>(null);
   const [copiedStates, setCopiedStates] = useState<Record<string, boolean>>({});
 
@@ -37,16 +40,17 @@ const SalesAcademyTool: React.FC = () => {
 
   const handleGenerate = async () => {
     if (!formData.salesType || !formData.sector) {
-      alert('Por favor, completa los campos obligatorios.');
+      setError(t.tools.validationError);
       return;
     }
 
+    setError(null);
     setLoading(true);
     try {
       const data = await generateSalesAcademyPlan(formData);
       setResult(data);
-    } catch (error) {
-      alert('Ocurrió un error al diseñar tu plan de formación.');
+    } catch {
+      setError(t.tools.genericError);
     } finally {
       setLoading(false);
     }
@@ -107,6 +111,10 @@ const SalesAcademyTool: React.FC = () => {
         </div>
       </div>
 
+      {error && (
+        <p className="text-sm text-red-500 text-center" role="alert">{error}</p>
+      )}
+
       <button
         onClick={handleGenerate}
         disabled={loading}
@@ -120,7 +128,7 @@ const SalesAcademyTool: React.FC = () => {
         ) : (
           <>
             <GraduationCap className="w-5 h-5" />
-            Empezar Formación
+            Generar plan
           </>
         )}
       </button>

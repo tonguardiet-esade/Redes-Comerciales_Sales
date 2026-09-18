@@ -8,44 +8,59 @@ export const en = {
     userTooltip: "User Profile"
   },
   hero: {
-    titlePrefix: "Welcome to ",
+    eyebrow: "REDES COMERCIALES ECOSYSTEM · SALES",
+    titlePrefix: "Turn your commercial strategy into action",
     titleSuffix: "Redes Comerciales.Sales",
-    description: "The 'smart solutions' of our sales machine to get public aid for you or to offer it as a service to your clients.",
-    cta: "Intro to our Sales Playbook",
-    bullet1: "More sales without expanding internal team",
-    bullet2: "Active and aligned partners",
-    bullet3: "Full control of performance"
+    description: "When commercial execution gets fragmented across people and tools, generate campaigns, content, webinars, and sales processes with AI — without starting from scratch.",
+    cta: "View Sales Playbook",
+    ctaMicrocopy: "Methodology and resources to structure your commercial execution",
+    ctaSecondary: "Explore tools",
+    positioning: "Sales is the execution layer of the Redes Comerciales ecosystem: AI tools to create what your team needs to sell with method. It does not replace your CRM or manage partners — it complements your current stack.",
+    ecosystemLink: "Discover the ecosystem",
+    bullet1: "Less time preparing campaigns and follow-ups",
+    bullet2: "Materials ready for your team and collaborators",
+    bullet3: "More systematic sales processes, defined before moving them into your CRM"
   },
   features: {
-    title: "Everything you need to grow",
-    subtitle: "One platform, all the tools to take your business to the next level.",
-    learnMore: "Learn more"
+    title: "From idea to commercial execution",
+    subtitle: "Redes Comerciales ecosystem tools to generate campaigns, content, and processes. Try one in seconds — click a card.",
+    learnMore: "Open tool"
   },
   featureCards: {
     commercialStrategies: {
-      title: "Campaign Generator",
-      description: "Offers a complete catalog of outbound marketing campaigns and resources, designed to drive active prospecting and direct lead generation."
+      title: "Campaign generator",
+      description: "Create outbound prospecting sequences with emails, follow-ups, and CTAs tailored to your company and goal.",
+      intro: "Fill in 5 fields and get an outbound campaign sequence ready to adapt."
     },
     aiMarketing: {
-      title: "AI Assistants",
-      description: "Includes artificial intelligence assistants that facilitate the adaptation and creation of innovative marketing content for current or future campaigns."
+      title: "Commercial content assistant",
+      description: "Set role, tone, and goal to get a ready-to-use prompt and content examples for your campaigns.",
+      intro: "Set role, tone, and goal in minutes and get a prompt plus content examples."
     },
     virtualEvents: {
       title: "Webinars",
-      description: "Provides a 2-step structured tool to organize inbound marketing webinars: webinar setup and attendee management."
+      description: "Generate the agenda, host script, promotion ideas, and landing structure for your next lead-generation webinar.",
+      intro: "Describe your webinar and receive an agenda, host script, and promotion plan."
     },
     commercialAutomation: {
       title: "Automations",
-      description: "Lead tracking tool from HubSpot and LinkedIn that centralizes contacts, automatizes tasks, and optimizes the commercial process to improve conversion."
+      description: "Design a commercial follow-up flow with triggers, tasks, and contact sequences. Ideal for defining how to work leads before setting it up in your CRM.",
+      intro: "Share your commercial context and get a structured follow-up flow."
     },
     salesAcademy: {
       title: "Sales Academy",
-      description: "Provides resources with virtual assistants to perfect commercial pitches and academic materials to specialize in sales."
+      description: "Get a training plan with scripts, exercises, and sales simulations to align messaging with your team and collaborators.",
+      intro: "Tell us your context and receive a training plan with scripts and exercises."
     },
     dataRoom: {
       title: "Data Room",
-      description: "Centralized repository for sales materials: PPTs, documents, FAQs, templates, and event resources."
+      description: "Generate folder structure, templates, and usage guide to stop having commercial information scattered across people and folders.",
+      intro: "Describe your materials and get a folder structure and templates."
     }
+  },
+  tools: {
+    validationError: "Complete the fields marked with * to continue.",
+    genericError: "An error occurred. Please try again."
   },
   cta: {
     title: "Other Solutions",
@@ -65,7 +80,7 @@ export const en = {
     solutions: "Solutions",
     platforms: "Our Platforms",
     about: "About Redes Comerciales.Sales",
-    aboutDesc: "Transforming every collaborator into an active sales network through AI and commercial automation.",
+    aboutDesc: "AI tool hub for campaigns, commercial content, webinars, and sales processes.",
     contact: "Contact",
     legalSocial: "LEGAL & SOCIAL",
     legalNotice: "Legal Notice",
@@ -77,7 +92,7 @@ export const en = {
     description: "Available soon"
   },
   supportModal: {
-    title: "Marketing Support",
+    title: "Contact support",
     nameLabel: "Name",
     namePlaceholder: "Your full name",
     emailLabel: "Email",

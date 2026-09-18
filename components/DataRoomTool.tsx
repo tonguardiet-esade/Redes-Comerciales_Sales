@@ -18,14 +18,17 @@ import {
 } from 'lucide-react';
 import { generateDataRoomPlan } from '../lib/gemini';
 import { motion, AnimatePresence } from 'motion/react';
+import { useTranslations } from '../hooks/useTranslations';
 
 const DataRoomTool: React.FC = () => {
+  const { t } = useTranslations();
   const [formData, setFormData] = useState({
     companyType: '',
     productService: ''
   });
 
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
   const [result, setResult] = useState<any>(null);
   const [copiedStates, setCopiedStates] = useState<Record<string, boolean>>({});
   const [expandedFolders, setExpandedFolders] = useState<Record<string, boolean>>({});
@@ -37,10 +40,11 @@ const DataRoomTool: React.FC = () => {
 
   const handleGenerate = async () => {
     if (!formData.companyType || !formData.productService) {
-      alert('Por favor, rellena todos los campos.');
+      setError(t.tools.validationError);
       return;
     }
 
+    setError(null);
     setLoading(true);
     try {
       const data = await generateDataRoomPlan(formData);
@@ -51,8 +55,8 @@ const DataRoomTool: React.FC = () => {
         initialExpanded[f.folderName] = true;
       });
       setExpandedFolders(initialExpanded);
-    } catch (error) {
-      alert('Error al organizar el Data Room. Inténtalo de nuevo.');
+    } catch {
+      setError(t.tools.genericError);
     } finally {
       setLoading(false);
     }
@@ -103,6 +107,10 @@ const DataRoomTool: React.FC = () => {
         </div>
       </div>
 
+      {error && (
+        <p className="text-sm text-red-500 text-center" role="alert">{error}</p>
+      )}
+
       <button
         onClick={handleGenerate}
         disabled={loading}
@@ -116,7 +124,7 @@ const DataRoomTool: React.FC = () => {
         ) : (
           <>
             <Layers className="w-5 h-5" />
-            Generar Estructura Data Room
+            Generar estructura
           </>
         )}
       </button>

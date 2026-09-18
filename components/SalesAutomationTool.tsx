@@ -19,8 +19,10 @@ import {
 } from 'lucide-react';
 import { generateSalesAutomation } from '../lib/gemini';
 import { motion, AnimatePresence } from 'motion/react';
+import { useTranslations } from '../hooks/useTranslations';
 
 const SalesAutomationTool: React.FC = () => {
+  const { t } = useTranslations();
   const [formData, setFormData] = useState({
     leadSource: '',
     businessType: '',
@@ -28,6 +30,7 @@ const SalesAutomationTool: React.FC = () => {
   });
 
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
   const [result, setResult] = useState<any>(null);
   const [copiedStates, setCopiedStates] = useState<Record<string, boolean>>({});
 
@@ -38,16 +41,17 @@ const SalesAutomationTool: React.FC = () => {
 
   const handleGenerate = async () => {
     if (!formData.leadSource || !formData.businessType) {
-      alert('Por favor, rellena los campos iniciales.');
+      setError(t.tools.validationError);
       return;
     }
 
+    setError(null);
     setLoading(true);
     try {
       const data = await generateSalesAutomation(formData);
       setResult(data);
-    } catch (error) {
-      alert('Error al diseñar el flujo. Inténtalo de nuevo.');
+    } catch {
+      setError(t.tools.genericError);
     } finally {
       setLoading(false);
     }
@@ -111,6 +115,10 @@ const SalesAutomationTool: React.FC = () => {
         </select>
       </div>
 
+      {error && (
+        <p className="text-sm text-red-500 text-center" role="alert">{error}</p>
+      )}
+
       <button
         onClick={handleGenerate}
         disabled={loading}
@@ -124,7 +132,7 @@ const SalesAutomationTool: React.FC = () => {
         ) : (
           <>
             <Zap className="w-5 h-5 group-hover:rotate-12 transition-transform" />
-            Diseñar Automatización
+            Generar flujo
           </>
         )}
       </button>

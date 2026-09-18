@@ -10,44 +10,59 @@ export const es: Translations = {
     userTooltip: "Perfil de usuario"
   },
   hero: {
-    titlePrefix: "Bienvenidos a ",
+    eyebrow: "ECOSISTEMA REDES COMERCIALES · SALES",
+    titlePrefix: "Convierte tu estrategia comercial en acción",
     titleSuffix: "Redes Comerciales.Sales",
-    description: "Las 'smart solutions' de nuestra máquina de ventas para conseguir ayudas públicas para ti o para ofrecerlo como servicio a tus clientes.",
-    cta: "Intro a nuestra Sales Playbook",
-    bullet1: "Más ventas sin ampliar equipo interno",
-    bullet2: "Partners activos y alineados",
-    bullet3: "Control total del rendimiento"
+    description: "Cuando la ejecución comercial se fragmenta entre personas y herramientas, aquí puedes generar campañas, contenido, webinars y procesos de venta con IA — sin empezar de cero.",
+    cta: "Ver Sales Playbook",
+    ctaMicrocopy: "Metodología y recursos para ordenar tu ejecución comercial",
+    ctaSecondary: "Explorar herramientas",
+    positioning: "Sales es la capa de ejecución del ecosistema Redes Comerciales: herramientas con IA para crear lo que tu equipo necesita vender con método. No sustituye tu CRM ni gestiona partners — complementa tu stack actual.",
+    ecosystemLink: "Conocer el ecosistema",
+    bullet1: "Menos tiempo preparando campañas y seguimientos",
+    bullet2: "Materiales listos para tu equipo y colaboradores",
+    bullet3: "Procesos comerciales más sistemáticos, definidos antes de llevarlos al CRM"
   },
   features: {
-    title: "Todo lo que necesitas para crecer",
-    subtitle: "Una plataforma, todas las herramientas para impulsar tu negocio al siguiente nivel.",
-    learnMore: "Saber más"
+    title: "De la idea a la ejecución comercial",
+    subtitle: "Herramientas del ecosistema Redes Comerciales para generar campañas, contenido y procesos. Prueba una en segundos — pulsa una tarjeta.",
+    learnMore: "Abrir herramienta"
   },
   featureCards: {
     commercialStrategies: {
-      title: "Generador de campañas.",
-      description: "Ofrece un catálogo completo de campañas y recursos de marketing outbound, diseñado para impulsar la prospección activa y la captación directa de oportunidades"
+      title: "Generador de campañas",
+      description: "Crea secuencias de prospección outbound con emails, seguimientos y CTAs adaptados a tu empresa y objetivo.",
+      intro: "Completa 5 campos y obtén una secuencia de campaña outbound lista para adaptar."
     },
     aiMarketing: {
-      title: "Asistentes de IA",
-      description: "Incluye asistentes de inteligencia artificial que facilitan la adaptación y creación de contenido de marketing innovador para campañas actuales o futuras."
+      title: "Asistente de contenido comercial",
+      description: "Define rol, tono y objetivo para obtener un prompt listo y ejemplos de contenido para tus campañas.",
+      intro: "Define rol, tono y objetivo en minutos y obtén un prompt y ejemplos de contenido."
     },
     virtualEvents: {
       title: "Webinars",
-      description: "Proporciona una herramienta estructurada en 2 pasos para organizar webinars de inbound marketing: configuración del webinars y gestión de asistentes."
+      description: "Genera la agenda, guion del anfitrión, ideas de promoción y estructura de landing para tu próximo webinar de captación.",
+      intro: "Describe tu webinar y recibe agenda, guion del anfitrión y plan de promoción."
     },
     commercialAutomation: {
       title: "Automatizaciones",
-      description: "Herramienta de seguimiento de leads desde HubSpot y LinkedIn que centraliza contactos, automatiza tareas y optimiza el proceso comercial para mejorar la conversión."
+      description: "Diseña un flujo de seguimiento comercial con disparadores, tareas y secuencia de contacto. Ideal para definir cómo trabajar leads antes de configurarlo en tu CRM.",
+      intro: "Indica tu contexto comercial y obtén un flujo de seguimiento estructurado."
     },
     salesAcademy: {
-      title: "Sales academy",
-      description: "Proporciona recursos con asistentes virtuales para perfeccionar los pitch comerciales y materiales académicos para especializarse en ventas."
+      title: "Sales Academy",
+      description: "Obtén un plan de formación con scripts, ejercicios y simulación de venta para alinear mensajes con tu equipo y colaboradores.",
+      intro: "Cuéntanos tu contexto y recibe un plan de formación con scripts y ejercicios."
     },
     dataRoom: {
       title: "Data Room",
-      description: "Repositorio centralizado para materiales de ventas: PPTs, documentos, FAQs, plantillas y recursos de eventos."
+      description: "Genera la estructura de carpetas, plantillas y guía de uso para dejar de tener la información comercial repartida entre personas y carpetas.",
+      intro: "Describe tus materiales y obtén una estructura de carpetas y plantillas."
     }
+  },
+  tools: {
+    validationError: "Completa los campos marcados con * para continuar.",
+    genericError: "Ha ocurrido un error. Inténtalo de nuevo."
   },
   cta: {
     title: "Otras Soluciones",
@@ -67,7 +82,7 @@ export const es: Translations = {
     solutions: "Soluciones",
     platforms: "Nuestras Plataformas",
     about: "Sobre Redes Comerciales.Sales",
-    aboutDesc: "Transforma a cada colaborador en una red de ventas activa con inteligencia artificial y automatización comercial.",
+    aboutDesc: "Hub de herramientas con IA para campañas, contenido comercial, webinars y procesos de venta.",
     contact: "Contacto",
     legalSocial: "LEGAL & SOCIAL",
     legalNotice: "Aviso legal",
@@ -79,7 +94,7 @@ export const es: Translations = {
     description: "Disponible próximamente"
   },
   supportModal: {
-    title: "Soporte de marketing",
+    title: "Contactar soporte",
     nameLabel: "Nombre",
     namePlaceholder: "Tu nombre completo",
     emailLabel: "Correo electrónico",

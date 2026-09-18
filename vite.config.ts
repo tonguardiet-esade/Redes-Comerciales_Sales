@@ -2,10 +2,12 @@ import path from 'path';
 import { defineConfig, loadEnv } from 'vite';
 import react from '@vitejs/plugin-react';
 import tailwindcss from '@tailwindcss/vite';
+import { seoPublicPlugin } from './plugins/seoPublicPlugin';
 
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, '.', '');
   const geminiApiKey = env.GEMINI_API_KEY || process.env.GEMINI_API_KEY || '';
+  const siteUrl = env.VITE_SITE_URL?.trim() || 'http://localhost:3001';
   return {
     server: {
       port: 3001,
@@ -17,7 +19,7 @@ export default defineConfig(({ mode }) => {
       strictPort: true,
       host: '0.0.0.0',
     },
-    plugins: [react(), tailwindcss()],
+    plugins: [react(), tailwindcss(), seoPublicPlugin(siteUrl)],
     define: {
       'process.env.API_KEY': JSON.stringify(geminiApiKey),
       'process.env.GEMINI_API_KEY': JSON.stringify(geminiApiKey),

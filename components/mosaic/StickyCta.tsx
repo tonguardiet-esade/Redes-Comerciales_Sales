@@ -20,7 +20,7 @@ const StickyCta = ({ onClick, label }: StickyCtaProps) => {
   if (!visible) return null;
 
   return (
-    <div className="sticky-cta fixed bottom-4 md:bottom-6 left-4 right-4 md:left-auto md:right-6 z-50 flex justify-center md:justify-end pointer-events-none">
+    <div className="sticky-cta fixed bottom-4 md:bottom-6 left-4 right-4 md:left-auto md:right-[5.75rem] z-50 flex justify-center md:justify-end pointer-events-none">
       <button
         type="button"
         onClick={onClick}

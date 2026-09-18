@@ -17,8 +17,10 @@ import {
 } from 'lucide-react';
 import { generateAIAssistant } from '../lib/gemini';
 import { motion, AnimatePresence } from 'motion/react';
+import { useTranslations } from '../hooks/useTranslations';
 
 const AIAssistantTool: React.FC = () => {
+  const { t } = useTranslations();
   const [formData, setFormData] = useState({
     role: '',
     tone: 'profesional',
@@ -29,6 +31,7 @@ const AIAssistantTool: React.FC = () => {
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState<any>(null);
   const [copiedStates, setCopiedStates] = useState<Record<string, boolean>>({});
+  const [error, setError] = useState<string | null>(null);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
@@ -46,16 +49,17 @@ const AIAssistantTool: React.FC = () => {
 
   const handleGenerate = async () => {
     if (!formData.role || !formData.objective) {
-      alert('Por favor, rellena todos los campos obligatorios');
+      setError(t.tools.validationError);
       return;
     }
 
+    setError(null);
     setLoading(true);
     try {
       const data = await generateAIAssistant(formData);
       setResult(data);
-    } catch (error) {
-      alert('Ocurrió un error al generar el asistente. Por favor, inténtalo de nuevo.');
+    } catch {
+      setError(t.tools.genericError);
     } finally {
       setLoading(false);
     }
@@ -151,6 +155,10 @@ const AIAssistantTool: React.FC = () => {
         </div>
       </div>
 
+      {error && (
+        <p className="text-sm text-red-500 text-center" role="alert">{error}</p>
+      )}
+
       <button
         onClick={handleGenerate}
         disabled={loading}
@@ -164,7 +172,7 @@ const AIAssistantTool: React.FC = () => {
         ) : (
           <>
             <Bot className="w-5 h-5 group-hover:scale-110 transition-transform" />
-            Construir Asistente
+            Generar asistente
           </>
         )}
       </button>

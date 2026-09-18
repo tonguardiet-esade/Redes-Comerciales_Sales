@@ -36,6 +36,7 @@ const Features: React.FC = () => {
     const tool = tools[id];
     return (
       <div className="sales-tool-content">
+        <p className="mosaic-body text-mosaic-black-300 mb-6">{feature.intro}</p>
         {tool ?? (
           <div className="space-y-6">
             <p className="mosaic-body text-mosaic-black-300">{feature.description}</p>

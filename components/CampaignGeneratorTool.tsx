@@ -18,8 +18,10 @@ import {
 } from 'lucide-react';
 import { generateCampaign } from '../lib/gemini';
 import { motion, AnimatePresence } from 'motion/react';
+import { useTranslations } from '../hooks/useTranslations';
 
 const CampaignGeneratorTool: React.FC = () => {
+  const { t } = useTranslations();
   const [formData, setFormData] = useState({
     companyType: '',
     buyerPersona: '',
@@ -32,6 +34,7 @@ const CampaignGeneratorTool: React.FC = () => {
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState<any>(null);
   const [copiedStates, setCopiedStates] = useState<Record<string, boolean>>({});
+  const [error, setError] = useState<string | null>(null);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
@@ -40,16 +43,17 @@ const CampaignGeneratorTool: React.FC = () => {
 
   const handleGenerate = async () => {
     if (!formData.companyType || !formData.buyerPersona || !formData.sector || !formData.objective) {
-      alert('Por favor, rellena todos los campos obligatorios');
+      setError(t.tools.validationError);
       return;
     }
 
+    setError(null);
     setLoading(true);
     try {
       const data = await generateCampaign(formData);
       setResult(data);
-    } catch (error) {
-      alert('Ocurrió un error al generar la campaña. Por favor, inténtalo de nuevo.');
+    } catch {
+      setError(t.tools.genericError);
     } finally {
       setLoading(false);
     }
@@ -177,6 +181,10 @@ const CampaignGeneratorTool: React.FC = () => {
         </div>
       </div>
 
+      {error && (
+        <p className="text-sm text-red-500 text-center" role="alert">{error}</p>
+      )}
+
       <button
         onClick={handleGenerate}
         disabled={loading}
@@ -190,7 +198,7 @@ const CampaignGeneratorTool: React.FC = () => {
         ) : (
           <>
             <Sparkles className="w-5 h-5 group-hover:rotate-12 transition-transform" />
-            Generar Campaña
+            Generar campaña
           </>
         )}
       </button>
