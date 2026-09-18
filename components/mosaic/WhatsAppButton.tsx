@@ -15,8 +15,8 @@ const PILL_BASE =
   'inline-flex items-center justify-center gap-2 bg-[#25D366] text-white border border-[#25D366] font-semibold no-underline transition-[transform,background,box-shadow] duration-200 hover:bg-[#1ebe57] hover:border-[#1ebe57] hover:text-white mosaic-focus-ring';
 
 const FLOAT_CLASSES = [
-  'fixed z-[60] inline-flex items-center justify-center',
-  'right-4 bottom-4 sm:right-5 sm:bottom-5',
+  'fixed z-[80] inline-flex items-center justify-center',
+  'right-4 bottom-28 sm:right-5 sm:bottom-5',
   'w-14 h-14 sm:w-[3.75rem] sm:h-[3.75rem]',
   'p-2 text-white',
   'rounded-full bg-[#25D366]',

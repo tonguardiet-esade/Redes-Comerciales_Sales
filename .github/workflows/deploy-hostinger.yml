@@ -25,6 +25,7 @@ jobs:
 
       - name: Compilar Sales
         env:
+          VITE_SITE_URL: https://sales.redescomerciales.pro
           VITE_WEB_URL: https://redescomerciales.pro
           VITE_PLATAFORMA_URL: https://plataforma.redescomerciales.pro
           VITE_PLATFORM_URL: https://plataforma.redescomerciales.pro
